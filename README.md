@@ -28,6 +28,11 @@
 #### pubspec.yaml
 ```Dart
 gromore: ^0.0.1
+//或者使用git版本，体验最新版本
+gromore:
+    git:
+      url: https://github.com/gstory0404/gromore.git
+      ref: 02786d8e7c486d374c5b9a4cca1eac1b7f070b2a
 ```
 #### 引入
 ```Dart
