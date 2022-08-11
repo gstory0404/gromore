@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:gromore/gromore.dart';
+import 'package:gromore/gromore_stream.dart';
+import 'package:gromore_example/native_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -63,9 +65,6 @@ class IndexPageState extends State<IndexPage> {
       onVerify: (verify, transId, rewardName, rewardAmount) {
         print("激励广告奖励 $verify $transId   $rewardName   $rewardAmount");
       },
-      onFinish: () {
-        print("激励广告完成");
-      },
     ));
   }
 
@@ -77,7 +76,7 @@ class IndexPageState extends State<IndexPage> {
       //gromore广告 ios appid 必填
       iosAppId: "5205916",
       //是否debug  上线改为false
-      debug: false,
+      debug: true,
     );
     print("sdk初始化 $_init");
     _version = await Gromore.sdkVersion();
@@ -127,6 +126,17 @@ class IndexPageState extends State<IndexPage> {
                       extra: "111111",
                       //用户id
                       userID: "10000");
+                },
+              ),
+              //信息流广告
+              MaterialButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                child:  const Text('信息流'),
+                onPressed: () async {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) {
+                    return const NativePage();
+                  }));
                 },
               ),
             ],

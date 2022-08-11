@@ -33,8 +33,8 @@ typedef GroReady = void Function();
 typedef GroUnReady = void Function();
 
 ///广告奖励验证
-typedef GroVerify = void Function(bool verify,
-    String transId, String rewardName, int rewardAmount);
+typedef GroVerify = void Function(
+    bool verify, String transId, String rewardName, int rewardAmount);
 
 ///倒计时
 typedef GroAdTick = void Function(int time);
@@ -49,6 +49,20 @@ class GromoreRewardCallBack {
   GroReady? onReady;
   GroUnReady? onUnReady;
 
+  ///[onShow] 展示
+  ///
+  /// [onClick] 点击
+  ///
+  /// [onClose] 关闭
+  ///
+  /// [onFail] 加载失败  code message
+  ///
+  /// [onVerify] 播放完成验证奖励 [verify]是否有效 [transId]验证id [rewardName]奖励名称 [rewardAmount]奖励数量
+  ///
+  /// [onReady] 广告准备就绪
+  ///
+  /// [onUnReady] 广告尚未准备完成
+  ///
   GromoreRewardCallBack(
       {this.onShow,
       this.onClick,
@@ -57,4 +71,21 @@ class GromoreRewardCallBack {
       this.onVerify,
       this.onReady,
       this.onUnReady});
+}
+
+///信息流广告回调
+class GromoreNativeCallBack {
+  GroShow? onShow;
+  GroClose? onClose;
+  GroFail? onFail;
+  GroClick? onClick;
+
+  ///[onShow] 展示
+  ///
+  /// [onClick] 点击
+  ///
+  /// [onClose] 关闭
+  ///
+  /// [onFail] 加载失败  [code] [message]
+  GromoreNativeCallBack({this.onShow, this.onClick, this.onClose, this.onFail});
 }

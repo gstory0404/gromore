@@ -3,6 +3,7 @@
 #import "reward/RewardAd.h"
 #import "GroLogUtil.h"
 #import "GromoreEvent.h"
+#import "GromoreNativeAd.h"
 
 @implementation GromorePlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
@@ -13,6 +14,8 @@
     [registrar addMethodCallDelegate:instance channel:channel];
     //注册event
     [[GromoreEvent sharedInstance]  initEvent:registrar];
+    //注册native
+    [registrar registerViewFactory:[[GromoreNativeAdFactory alloc] initWithMessenger:registrar.messenger] withId:@"com.gstory.gromore/NativeAdView"];
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {

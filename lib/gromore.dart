@@ -1,9 +1,13 @@
 export 'gromore_code.dart';
-export 'gromore_stream.dart';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'gromore.dart';
+
 part 'gromore_callback.dart';
+part 'widget/gromore_native_ad_widget.dart';
 
 class Gromore {
   static const MethodChannel _channel = MethodChannel('gromore');
