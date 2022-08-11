@@ -32,7 +32,7 @@ gromore: ^0.0.1
 gromore:
     git:
       url: https://github.com/gstory0404/gromore.git
-      ref: 02786d8e7c486d374c5b9a4cca1eac1b7f070b2a
+      ref: 46ed91678980dc663326a7b8a667d8133ab30ab1
 ```
 #### 引入
 ```Dart
@@ -41,7 +41,7 @@ import 'package:gromore/gromore.dart';
 
 ## 使用
 
-#### SDK初始化
+### SDK初始化
 ```Dart
 await Gromore.register(
     //gromore广告 Android appid 必填
@@ -53,12 +53,12 @@ await Gromore.register(
 );
 ```
 
-#### 获取SDK版本
+### 获取SDK版本
 ```Dart
 await Gromore.sdkVersion();
 ```
 
-#### 激励视频广告
+### 激励视频广告
 预加载激励视频广告
 ```Dart
 await Gromore.loadRewardAd(
@@ -108,4 +108,32 @@ GromoreStream.initAdStream(
           print("激励广告奖励 $verify $transId   $rewardName   $rewardAmount");
         },
     ));
+```
+
+### 信息流广告
+```dart
+GroMoreNativeAd(
+     //android广告id
+     androidId: "102110836",
+     //ios广告id
+     iosId: "102110836",
+     //宽
+     width: 300,
+     //高
+     height: 200,
+     callBack: GromoreNativeCallBack(
+          onShow: () {
+             print("信息流广告显示");
+          },
+          onFail: (code,error) {
+             print("信息流广告失败 $error");
+          },
+          onClose: () {
+             print("信息流广告关闭");
+          },
+          onClick: () {
+             print("信息流广告点击");
+           },
+       ),
+),
 ```
