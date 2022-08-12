@@ -1,7 +1,9 @@
 # 穿山甲gromore聚合广告插件flutter版
 <p>
-<a href="https://pub.flutter-io.cn/packages/gromore"><img src=https://img.shields.io/badge/gromore-v0.0.1-success></a>
+<a href="https://pub.flutter-io.cn/packages/gromore"><img src=https://img.shields.io/badge/gromore-v0.0.2-success></a>
 </p>
+
+目前仅支持ios 信息流、横幅、激励广告
 
 ## 官方文档
 * [Android](https://www.csjplatform.com/union/media/union/download/detail?id=75&osType=android&locale=zh-CN)
@@ -27,8 +29,8 @@
 ## 集成步骤
 #### pubspec.yaml
 ```Dart
-gromore: ^0.0.1
-//或者使用git版本，体验最新版本
+gromore: ^0.0.2
+//或者使用git仓库版本，体验最新版本
 gromore:
     git:
       url: https://github.com/gstory0404/gromore.git
@@ -222,3 +224,23 @@ GromoreVerify(
       this.rewardName,
       this.rewardAmount});
 ```
+
+## 插件链接
+
+|插件|地址|
+|:----|:----|
+|字节穿山甲广告插件|[flutter_unionad](https://github.com/gstory0404/flutter_unionad)|
+|腾讯优量汇广告插件|[flutter_tencentad](https://github.com/gstory0404/flutter_tencentad)|
+|聚合广告插件|[flutter_universalad](https://github.com/gstory0404/flutter_universalad)|
+|百度百青藤广告插件|[flutter_baiduad](https://github.com/gstory0404/flutter_baiduad)|
+|字节穿山甲内容合作插件|[flutter_pangrowth](https://github.com/gstory0404/flutter_pangrowth)|
+|文档预览插件|[file_preview](https://github.com/gstory0404/file_preview)|
+|滤镜|[gpu_image](https://github.com/gstory0404/gpu_image)|
+|Gromore聚合广告|[gpu_image](https://github.com/gstory0404/gromore)|
+
+## 联系方式
+* Email: gstory0404@gmail.com
+* Blog：https://www.gstory.cn/
+
+* QQ群: <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=4j2_yF1-pMl58y16zvLCFFT2HEmLf6vQ&jump_from=webapi"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="649574038" title="flutter交流"></a>
+
