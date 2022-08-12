@@ -1,8 +1,12 @@
 export 'gromore_code.dart';
+export 'data/gromore_error.dart';
+export 'data/gromore_verify.dart';
+export 'data/gromore_ad_info.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gromore/data/gromore_ad_info.dart';
 
 import 'gromore.dart';
 

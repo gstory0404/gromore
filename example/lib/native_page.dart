@@ -27,25 +27,22 @@ class _NativePageState extends State<NativePage> {
               //android广告id
               androidId: "",
               //ios广告id
-              iosId: "102110836",
+              iosId: "102110836-----------",
               //宽
               width: 300,
               //高
               height: 200,
-              callBack: GromoreNativeCallBack(
-                onShow: () {
-                  print("信息流广告显示");
-                },
-                onFail: (code,error) {
-                  print("信息流广告失败 $error");
-                },
-                onClose: () {
-                  print("信息流广告关闭");
-                },
-                onClick: () {
-                  print("信息流广告点击");
-                },
-              ),
+              callBack: GromoreNativeCallBack(onShow: () {
+                print("信息流广告显示");
+              }, onFail: (GromoreError error) {
+                print("信息流广告失败 ${error.toJson()}");
+              }, onClose: () {
+                print("信息流广告关闭");
+              }, onClick: () {
+                print("信息流广告点击");
+              }, onAdInfo: (GromoreAdInfo info) {
+                print("信息流广告相关信息 ${info.toJson()}");
+              }),
             ),
             GroMoreNativeAd(
               androidId: "",

@@ -9,7 +9,7 @@ part of 'gromore.dart';
 typedef GroShow = void Function();
 
 ///失败
-typedef GroFail = void Function(int code, dynamic message);
+typedef GroFail = void Function(GromoreError error);
 
 ///点击
 typedef GroClick = void Function();
@@ -33,11 +33,13 @@ typedef GroReady = void Function();
 typedef GroUnReady = void Function();
 
 ///广告奖励验证
-typedef GroVerify = void Function(
-    bool verify, String transId, String rewardName, int rewardAmount);
+typedef GroVerify = void Function(GromoreVerify verify);
 
 ///倒计时
 typedef GroAdTick = void Function(int time);
+
+///倒计时
+typedef GroAdInfo = void Function(GromoreAdInfo info);
 
 ///激励广告回调
 class GromoreRewardCallBack {
@@ -48,6 +50,7 @@ class GromoreRewardCallBack {
   GroVerify? onVerify;
   GroReady? onReady;
   GroUnReady? onUnReady;
+  GroAdInfo? onAdInfo;
 
   ///[onShow] 展示
   ///
@@ -63,6 +66,8 @@ class GromoreRewardCallBack {
   ///
   /// [onUnReady] 广告尚未准备完成
   ///
+  /// [onAdInfo] 广告信息
+  ///
   GromoreRewardCallBack(
       {this.onShow,
       this.onClick,
@@ -70,7 +75,8 @@ class GromoreRewardCallBack {
       this.onFail,
       this.onVerify,
       this.onReady,
-      this.onUnReady});
+      this.onUnReady,
+      this.onAdInfo});
 }
 
 ///信息流广告回调
@@ -79,6 +85,7 @@ class GromoreNativeCallBack {
   GroClose? onClose;
   GroFail? onFail;
   GroClick? onClick;
+  GroAdInfo? onAdInfo;
 
   ///[onShow] 展示
   ///
@@ -87,7 +94,9 @@ class GromoreNativeCallBack {
   /// [onClose] 关闭
   ///
   /// [onFail] 加载失败  [code] [message]
-  GromoreNativeCallBack({this.onShow, this.onClick, this.onClose, this.onFail});
+  ///
+  /// [onAdInfo] 广告信息
+  GromoreNativeCallBack({this.onShow, this.onClick, this.onClose, this.onFail,this.onAdInfo});
 }
 
 ///信息流广告回调
@@ -96,6 +105,7 @@ class GromoreBannerCallBack {
   GroClose? onClose;
   GroFail? onFail;
   GroClick? onClick;
+  GroAdInfo? onAdInfo;
 
   ///[onShow] 展示
   ///
@@ -104,5 +114,7 @@ class GromoreBannerCallBack {
   /// [onClose] 关闭
   ///
   /// [onFail] 加载失败  [code] [message]
-  GromoreBannerCallBack({this.onShow, this.onClick, this.onClose, this.onFail});
+  ///
+  /// [onAdInfo] 关闭
+  GromoreBannerCallBack({this.onShow, this.onClick, this.onClose, this.onFail,this.onAdInfo});
 }

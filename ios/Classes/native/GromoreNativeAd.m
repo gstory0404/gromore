@@ -11,6 +11,7 @@
 #import "ABUAdSDK/ABUAdSDK.h"
 #import "GroLogUtil.h"
 #import "ABUUIViewController+getCurrentVC.h"
+#import "MJExtension.h"
 
 #pragma mark - GromoreNativeAdFactory
 
@@ -158,7 +159,9 @@
 //广告展示
 //当次展示标识/自定义预缓存时机/展示数据统计
 - (void)nativeAdDidBecomeVisible:(ABUNativeAdView *_Nonnull)nativeAdView {
-    [[GroLogUtil sharedInstance] print:@"信息流广告展示"];
+    NSString *str = [NSString stringWithFormat:@"信息流广告展示 %@",nativeAdView.getShowEcpmInfo.mj_keyValues];
+    [[GroLogUtil sharedInstance] print:str];
+    [self.channel invokeMethod:@"onAdInfo" arguments:bannerAd.getShowEcpmInfo.mj_keyValues result:nil];
 }
 
 //广告点击事件

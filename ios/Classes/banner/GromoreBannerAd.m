@@ -10,6 +10,7 @@
 #import "ABUUIViewController+getCurrentVC.h"
 #import "ABUAdSDK/ABUAdSDK.h"
 #import "GroLogUtil.h"
+#import "MJExtension.h"
 
 #pragma mark - GromoreNativeAdFactory
 
@@ -96,7 +97,7 @@
 /// @param bannerAd 广告操作对象
 /// @param bannerView 广告视图
 - (void)bannerAdDidLoad:(ABUBannerAd *)bannerAd bannerView:(UIView *)bannerView{
-    [[GroLogUtil sharedInstance] print:@"banner广告加载成功回调"];
+    [[GroLogUtil sharedInstance] print:@"横幅广告加载成功回调"];
     [self.container addSubview:bannerView];
     NSDictionary *dictionary = @{@"width": @(bannerView.frame.size.width),@"height":@(bannerView.frame.size.height)};
     [self.channel invokeMethod:@"onShow" arguments:dictionary result:nil];
@@ -106,7 +107,7 @@
 /// @param bannerAd 广告操作对象
 /// @param error 错误信息
 - (void)bannerAd:(ABUBannerAd *)bannerAd didLoadFailWithError:(NSError *_Nullable)error{
-    [[GroLogUtil sharedInstance] print:@"广告加载失败回调"];
+    [[GroLogUtil sharedInstance] print:@"横幅广告加载失败回调"];
     NSInteger code = error.code;
     NSString *message = error.userInfo;
     NSDictionary *dictionary = @{@"code":@(code),@"message":message};
@@ -125,35 +126,30 @@
 /// @param bannerAd 广告操作对象
 /// @param bannerView 广告视图
 - (void)bannerAdDidBecomeVisible:(ABUBannerAd *)bannerAd bannerView:(UIView *)bannerView{
-    [[GroLogUtil sharedInstance] print:@"banner广告展示"];
-}
-
-/// 广告展示回调
-/// @param bannerAd 广告操作对象
-/// @param bannerView 广告视图
-- (void)bannerAdDidBecomVisible:(ABUBannerAd *)bannerAd bannerView:(UIView *)bannerView ABU_DEPRECATED_MSG_ATTRIBUTE("Use bannerAdDidBecomeVisible:bannerView: instead"){
-    [[GroLogUtil sharedInstance] print:@"banner广告展示"];
+    NSString *str = [NSString stringWithFormat:@"横幅广告展示 %@",bannerAd.getShowEcpmInfo.mj_keyValues];
+    [[GroLogUtil sharedInstance] print:str];
+    [self.channel invokeMethod:@"onAdInfo" arguments:bannerAd.getShowEcpmInfo.mj_keyValues result:nil];
 }
 
 /// 即将弹出广告详情页
 /// @param ABUBannerAd 广告操作对象
 /// @param bannerView 广告视图
 - (void)bannerAdWillPresentFullScreenModal:(ABUBannerAd *)ABUBannerAd bannerView:(UIView *)bannerView{
-    [[GroLogUtil sharedInstance] print:@"banner广告详情页或appstore打开"];
+    [[GroLogUtil sharedInstance] print:@"横幅广告详情页或appstore打开"];
 }
 
 /// 详情广告页将要关闭
 /// @param ABUBannerAd 广告操作对象
 /// @param bannerView 广告视图
 - (void)bannerAdWillDismissFullScreenModal:(ABUBannerAd *)ABUBannerAd bannerView:(UIView *)bannerView{
-    [[GroLogUtil sharedInstance] print:@"banner广告详情页或appstore关闭"];
+    [[GroLogUtil sharedInstance] print:@"横幅广告详情页或appstore关闭"];
 }
 
 /// 广告点击事件回调
 /// @param ABUBannerAd 广告操作对象
 /// @param bannerView 广告视图
 - (void)bannerAdDidClick:(ABUBannerAd *)ABUBannerAd bannerView:(UIView *)bannerView{
-    [[GroLogUtil sharedInstance] print:@"banner广告点击"];
+    [[GroLogUtil sharedInstance] print:@"横幅广告点击"];
     [self.channel invokeMethod:@"onClick" arguments:nil result:nil];
 }
 
@@ -162,7 +158,7 @@
 /// @param bannerView 广告视图
 /// @param filterwords 不喜欢广告的原因，由adapter开发者配置，可能为空
 - (void)bannerAdDidClosed:(ABUBannerAd *)ABUBannerAd bannerView:(UIView *)bannerView dislikeWithReason:(NSArray<NSDictionary *> *_Nullable)filterwords{
-    [[GroLogUtil sharedInstance] print:@"banner广告关闭"];
+    [[GroLogUtil sharedInstance] print:@"横幅广告关闭"];
     [self.container removeFromSuperview];
     [self.channel invokeMethod:@"onClose" arguments:nil result:nil];
 }

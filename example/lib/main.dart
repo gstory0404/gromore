@@ -43,30 +43,24 @@ class IndexPageState extends State<IndexPage> {
     _initSDK();
     _adStream = GromoreStream.initAdStream(
         //激励广告
-        gromoreRewardCallBack: GromoreRewardCallBack(
-      onShow: () {
-        print("激励广告显示");
-      },
-      onClick: () {
-        print("激励广告点击");
-      },
-      onFail: (code, message) {
-        print("激励广告失败 $code $message");
-      },
-      onClose: () {
-        print("激励广告关闭");
-      },
-      onReady: () async {
-        print("激励广告预加载准备就绪");
-        await Gromore.showRewardAd();
-      },
-      onUnReady: () {
-        print("激励广告预加载未准备就绪");
-      },
-      onVerify: (verify, transId, rewardName, rewardAmount) {
-        print("激励广告奖励 $verify $transId   $rewardName   $rewardAmount");
-      },
-    ));
+        gromoreRewardCallBack: GromoreRewardCallBack(onShow: () {
+      print("激励广告显示");
+    }, onClick: () {
+      print("激励广告点击");
+    }, onFail: (GromoreError error) {
+      print("激励广告失败 ${error.toJson()}");
+    }, onClose: () {
+      print("激励广告关闭");
+    }, onReady: () async {
+      print("激励广告预加载准备就绪");
+      await Gromore.showRewardAd();
+    }, onUnReady: () {
+      print("激励广告预加载未准备就绪");
+    }, onVerify: (GromoreVerify verify) {
+      print("激励广告奖励 ${verify.toJson()}");
+    }, onAdInfo: (GromoreAdInfo info) {
+      print("激励相关信息 ${info.toJson()}");
+    }));
   }
 
   //注册
@@ -133,7 +127,7 @@ class IndexPageState extends State<IndexPage> {
               MaterialButton(
                 color: Colors.blue,
                 textColor: Colors.white,
-                child:  const Text('信息流广告'),
+                child: const Text('信息流广告'),
                 onPressed: () async {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
                     return const NativePage();
@@ -144,7 +138,7 @@ class IndexPageState extends State<IndexPage> {
               MaterialButton(
                 color: Colors.blue,
                 textColor: Colors.white,
-                child:  const Text('横幅广告'),
+                child: const Text('横幅广告'),
                 onPressed: () async {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
                     return const BannerPage();

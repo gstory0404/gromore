@@ -11,6 +11,7 @@
 #import "GroLogUtil.h"
 #import "GromoreEvent.h"
 #import "ABUAdSDK/ABUAdapterRewardAdInfo.h"
+#import "MJExtension.h"
 
 @interface RewardAd()<ABURewardedVideoAdDelegate>
 
@@ -147,8 +148,6 @@
 //奖励发放的标识(包括adn的C2C/S2S)
 //标识奖励发放的条件
 - (void)rewardedVideoAdServerRewardDidSucceed:(ABURewardedVideoAd *)rewardedVideoAd rewardInfo:(ABUAdapterRewardAdInfo *)rewardInfo verify:(BOOL)verify{
- 
-   
     NSString *transId = rewardInfo.tradeId;
     if(transId == nil){
         transId = @"";
@@ -159,16 +158,20 @@
     NSString * logs = [NSString stringWithFormat:@"激励奖励发放==>verify=%@,transId=%@,rewardAmount=%@,rewardName=%@", rewardVerify,transId,rewardAmount,rewardName];
     [[GroLogUtil sharedInstance] print:logs];
     NSDictionary *dictionary = @{@"adType":@"rewardAd",@"onAdMethod":@"onVerify",@"verify":rewardVerify,@"transId":transId,@"rewardAmount":rewardAmount,@"rewardName":rewardName};
-      [[GromoreEvent sharedInstance] sentEvent:dictionary];
+    [[GromoreEvent sharedInstance] sentEvent:dictionary];
+    //广告相关信息
+    NSMutableDictionary *ecpmInfo = rewardedVideoAd.getShowEcpmInfo.mj_keyValues;
+//    NSDictionary *adInfo = @{@"adType":@"rewardAd",@"onAdMethod":@"onAdInfo"};
+    [ecpmInfo setValue:@"rewardAd" forKey:@"adType"];
+    [ecpmInfo setValue:@"onAdInfo" forKey:@"onAdMethod"];
+//    [ecpmInfo addEntriesFromDictionary:adInfo];
+    [[GroLogUtil sharedInstance] print:ecpmInfo];
+    [[GromoreEvent sharedInstance] sentEvent:ecpmInfo];
 }
 
 //视频播放结束(可能因为错误非正常结束)
 //标识播放结束(包括播放错误)/问题排查
 - (void)rewardedVideoAd:(ABURewardedVideoAd *)rewardedVideoAd didPlayFinishWithError:(NSError *)error{
     [[GroLogUtil sharedInstance] print:@"视频播放结束(可能因为错误非正常结束)"];
-    NSInteger code = error.code;
-    NSString *message = error.userInfo;
-    NSDictionary *dictionary = @{@"adType":@"rewardAd",@"onAdMethod":@"onFail",@"code":@(code),@"message":message};
-    [[GromoreEvent sharedInstance] sentEvent:dictionary];
 }
 @end

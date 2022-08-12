@@ -61,6 +61,9 @@ class GromoreAdMethod {
 
   ///倒计时
   static const String onADTick = "onADTick";
+
+  ///广告信息回调
+  static const String onAdInfo = "onAdInfo";
 }
 
 

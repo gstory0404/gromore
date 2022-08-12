@@ -4,7 +4,7 @@ import 'package:gromore/gromore.dart';
 /// @Author: gstory
 /// @CreateDate: 2022/8/12 16:40
 /// @Email gstory0404@gmail.com
-/// @Description: dart类作用描述 
+/// @Description: dart类作用描述
 
 class BannerPage extends StatefulWidget {
   const BannerPage({Key? key}) : super(key: key);
@@ -18,11 +18,18 @@ class _BannerPageState extends State<BannerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("信息流广告"),
+        title: const Text("横幅广告"),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Container(
+              margin: const EdgeInsets.only(top: 10),
+              child: const Text(
+                "穿山甲--->",
+                style: TextStyle(color: Colors.orangeAccent, fontSize: 18),
+              ),
+            ),
             GromoreBannerAd(
               //android广告id
               androidId: "",
@@ -34,36 +41,38 @@ class _BannerPageState extends State<BannerPage> {
               height: 200,
               callBack: GromoreBannerCallBack(
                 onShow: () {
-                  print("banner广告显示");
+                  print("横幅广告显示");
                 },
-                onFail: (code,error) {
-                  print("banner广告失败 $error");
+                onFail: (GromoreError error) {
+                  print("横幅广告失败 ${error.toJson()}");
                 },
                 onClose: () {
-                  print("banner广告关闭");
+                  print("横幅广告关闭");
                 },
                 onClick: () {
-                  print("banner广告点击");
+                  print("横幅广告点击");
                 },
+                onAdInfo: (GromoreAdInfo info){
+                  print("横幅广告相关信息 ${info.toJson()}");
+                }
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 10),
+              child: const Text(
+                "Mintegral--->",
+                style: TextStyle(color: Colors.orangeAccent, fontSize: 18),
               ),
             ),
             GromoreBannerAd(
               androidId: "",
-              iosId: "102110739",
+              iosId: "102114506",
               width: 400,
               height: 200,
             ),
-            GromoreBannerAd(
-              androidId: "",
-              iosId: "102110739",
-              width: 800,
-              height: 600,
-            )
           ],
         ),
       ),
     );
   }
 }
-
-

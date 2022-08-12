@@ -106,8 +106,9 @@ GromoreStream.initAdStream(
         },
         onVerify: (verify, transId, rewardName, rewardAmount) {
           print("激励广告奖励 $verify $transId   $rewardName   $rewardAmount");
-        },
-    ));
+        }, onAdInfo: (GromoreAdInfo info) {
+          print("激励相关信息 ${info.toJson()}");
+      }));
 ```
 
 ### 信息流广告
@@ -134,8 +135,11 @@ GroMoreNativeAd(
           },
           onClick: () {
              print("信息流广告点击");
-           },
-       ),
+       
+          }, 
+          onAdInfo: (GromoreAdInfo info) {
+            print("信息流广告相关信息 ${info.toJson()}");
+          }),
 ),
 ```
 
@@ -164,6 +168,57 @@ GromoreBannerAd(
        onClick: () {
           print("banner广告点击");
        },
-     ),
+        onAdInfo: (GromoreAdInfo info) {
+          print("信息流广告相关信息 ${info.toJson()}");
+       }),
    ),
+```
+
+### 回调说明
+
+#### GromoreAdInfo
+广告加载相关信息
+```dart
+/// @Description: 广告加载相关信息
+/// [adnName] ADN的名称，与平台配置一致，自定义ADN时为ADN唯一标识
+/// [customAdnName] 自定义ADN的名称，与平台配置一致，非自定义ADN为nil
+/// [slotID]  代码位
+/// [levelTag] 价格标签，多阶底价下有效
+/// [ecpm] 返回价格，nil为无权限
+/// [biddingType] 广告类型
+/// [errorMsg] 额外错误信息,一般为空(扩展字段)
+/// [requestID]  adn提供的真实广告加载ID，可为空
+GromoreAdInfo(
+      {this.adnName,
+        this.customAdnName,
+        this.slotID,
+        this.levelTag,
+        this.ecpm,
+        this.biddingType,
+        this.errorMsg,
+        this.requestID});
+```
+
+#### GromoreError
+广告加载错误信息
+```dart
+/// [code] 错误码
+/// [message] 错误信息
+GromoreError(
+    {this.code,
+  this.message});
+```
+
+#### GromoreError
+激励广告奖励信息
+```dart
+/// [verify] 是否有效
+/// [transId] 验证id
+/// [rewardName] 奖励名称
+/// [rewardAmount] 奖励数量
+GromoreVerify(
+    {this.verify,
+      this.transId,
+      this.rewardName,
+      this.rewardAmount});
 ```

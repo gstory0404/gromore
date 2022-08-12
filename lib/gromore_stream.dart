@@ -24,9 +24,11 @@ class GromoreStream {
       {GromoreRewardCallBack? gromoreRewardCallBack}) {
     StreamSubscription groStream =
         gromoreEventEvent.receiveBroadcastStream().listen((data) {
-      switch (data[GromoreAdType.adType]) {
+          print("接受数据$data");
+          Map<String,dynamic> map = Map<String,dynamic>.from(data);
+      switch (map[GromoreAdType.adType]) {
         case GromoreAdType.rewardAd:
-          switch(data[GromoreAdMethod.onAdMethod]){
+          switch(map[GromoreAdMethod.onAdMethod]){
             case GromoreAdMethod.onShow:
               if(gromoreRewardCallBack?.onShow != null) {
                 gromoreRewardCallBack?.onShow!();
@@ -39,7 +41,7 @@ class GromoreStream {
               break;
             case GromoreAdMethod.onFail:
               if(gromoreRewardCallBack?.onFail != null){
-                gromoreRewardCallBack?.onFail!(data["code"], data["message"]);
+                gromoreRewardCallBack?.onFail!(GromoreError.fromJson(map));
               }
               break;
             case GromoreAdMethod.onClick:
@@ -49,7 +51,7 @@ class GromoreStream {
               break;
             case GromoreAdMethod.onVerify:
               if(gromoreRewardCallBack?.onVerify != null){
-                gromoreRewardCallBack?.onVerify!(data["verify"],data["transId"],data["rewardName"],data["rewardAmount"]);
+                gromoreRewardCallBack?.onVerify!(GromoreVerify.fromJson(map));
               }
               break;
             case GromoreAdMethod.onReady:
@@ -60,6 +62,11 @@ class GromoreStream {
             case GromoreAdMethod.onUnReady:
               if(gromoreRewardCallBack?.onUnReady != null){
                 gromoreRewardCallBack?.onUnReady!();
+              }
+              break;
+            case GromoreAdMethod.onAdInfo:
+              if(gromoreRewardCallBack?.onAdInfo != null){
+                gromoreRewardCallBack?.onAdInfo!(GromoreAdInfo.fromJson(map));
               }
               break;
           }

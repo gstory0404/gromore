@@ -130,8 +130,8 @@ class _GroMoreNativeAdState extends State<GroMoreNativeAd> {
             _isShowAd = false;
           });
         }
-        Map map = call.arguments;
-        widget.callBack?.onFail!(map["code"], map["message"]);
+        Map<String,dynamic> map = call.arguments;
+        widget.callBack?.onFail!(GromoreError.fromJson(map));
         break;
       //点击
       case GromoreAdMethod.onClick:
@@ -145,6 +145,11 @@ class _GroMoreNativeAdState extends State<GroMoreNativeAd> {
           });
         }
         widget.callBack?.onClose!();
+        break;
+    //广告信息
+      case GromoreAdMethod.onAdInfo:
+        Map<String,dynamic> map = call.arguments;
+        widget.callBack?.onAdInfo!(GromoreAdInfo.fromJson(map));
         break;
     }
   }
