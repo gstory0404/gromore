@@ -8,6 +8,7 @@ import 'gromore.dart';
 
 part 'gromore_callback.dart';
 part 'widget/gromore_native_ad_widget.dart';
+part 'widget/gromore_banner_ad_widget.dart';
 
 class Gromore {
   static const MethodChannel _channel = MethodChannel('gromore');

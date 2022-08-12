@@ -4,6 +4,7 @@
 #import "GroLogUtil.h"
 #import "GromoreEvent.h"
 #import "GromoreNativeAd.h"
+#import "GromoreBannerAd.h"
 
 @implementation GromorePlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
@@ -16,6 +17,8 @@
     [[GromoreEvent sharedInstance]  initEvent:registrar];
     //注册native
     [registrar registerViewFactory:[[GromoreNativeAdFactory alloc] initWithMessenger:registrar.messenger] withId:@"com.gstory.gromore/NativeAdView"];
+    //注册banner
+    [registrar registerViewFactory:[[GromoreBannerAdFactory alloc] initWithMessenger:registrar.messenger] withId:@"com.gstory.gromore/BannerAdView"];
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {

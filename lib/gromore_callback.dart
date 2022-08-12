@@ -89,3 +89,20 @@ class GromoreNativeCallBack {
   /// [onFail] 加载失败  [code] [message]
   GromoreNativeCallBack({this.onShow, this.onClick, this.onClose, this.onFail});
 }
+
+///信息流广告回调
+class GromoreBannerCallBack {
+  GroShow? onShow;
+  GroClose? onClose;
+  GroFail? onFail;
+  GroClick? onClick;
+
+  ///[onShow] 展示
+  ///
+  /// [onClick] 点击
+  ///
+  /// [onClose] 关闭
+  ///
+  /// [onFail] 加载失败  [code] [message]
+  GromoreBannerCallBack({this.onShow, this.onClick, this.onClose, this.onFail});
+}

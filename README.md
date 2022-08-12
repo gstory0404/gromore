@@ -111,6 +111,7 @@ GromoreStream.initAdStream(
 ```
 
 ### 信息流广告
+> 配置广告时请使用模板广告
 ```dart
 GroMoreNativeAd(
      //android广告id
@@ -136,4 +137,33 @@ GroMoreNativeAd(
            },
        ),
 ),
+```
+
+### Banner(横幅)广告
+> 配置广告时请使用模板广告
+```dart
+GromoreBannerAd(
+     //android广告id
+     androidId: "",
+     //ios广告id
+     iosId: "102110739",
+     //宽
+     width: 300,
+     //高
+     height: 200,
+     callBack: GromoreBannerCallBack(
+       onShow: () {
+          print("banner广告显示");
+       },
+       onFail: (code,error) {
+          print("banner广告失败 $error");
+       },
+       onClose: () {
+          print("banner广告关闭");
+       },
+       onClick: () {
+          print("banner广告点击");
+       },
+     ),
+   ),
 ```

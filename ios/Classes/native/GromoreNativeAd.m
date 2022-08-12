@@ -78,20 +78,20 @@
     NSString *string = [NSString stringWithFormat:@"width=%d height=%d",self.width,self.height];
     [[GroLogUtil sharedInstance] print:string];
     CGSize size = CGSizeMake(self.width, self.height);
-    ABUAdUnit *slot1 = [[ABUAdUnit alloc] init];
-    ABUSize *imgSize1 = [[ABUSize alloc] init];
-    imgSize1.width = self.width;
-    imgSize1.height = self.height;
-    slot1.imgSize = imgSize1;
-    slot1.ID = self.codeId;
-    slot1.getExpressAdIfCan = YES;
+    ABUAdUnit *slot = [[ABUAdUnit alloc] init];
+    ABUSize *imgSize = [[ABUSize alloc] init];
+    imgSize.width = self.width;
+    imgSize.height = self.height;
+    slot.imgSize = imgSize;
+    slot.ID = self.codeId;
+    slot.getExpressAdIfCan = YES;
     // 如果是模板广告，返回高度将不一定是width，而是按照width和对应代码位在平台的配置计算出的高度
-    slot1.adSize =  CGSizeMake(self.width, self.height);
+    slot.adSize =  CGSizeMake(self.width, self.height);
     //v2700开始原生广告支持自渲染和模板类型混出，如果开发者在平台配置了对应代码位的该属性则无需设置；否则开发者需要设置getExpressAdIfCan属性来告知SDK当前广告位下配置的是否为模板类型；平台配置优先于getExpressAdIfCan设置
     //slot1.getExpressAdIfCan = YES;
     // 在getExpressAdIfCan=YES下，如果需要使用gdt express2.0，请设置useExpress2IfCanForGDT=YES;，如果开发者在平台配置了对应代码位的该属性则无需设置；否则开发者需要设置useExpress2IfCanForGDT属性来告知SDK当前广告位下配置的是否为模板2.0；平台配置优先于useExpress2IfCanForGDT设置
     //self.adManager.useExpress2IfCanForGDT = YES;
-    self.adManager = [[ABUNativeAdsManager alloc] initWithSlot:slot1];
+    self.adManager = [[ABUNativeAdsManager alloc] initWithSlot:slot];
     self.adManager.rootViewController = [UIViewController jsd_getRootViewController];
     self.adManager.startMutedIfCan = NO;
     self.adManager.delegate = self;
@@ -123,15 +123,6 @@
             [view render];
         }
     }
-//    for (ABUNativeAdView *view in nativeAdViewArray) {
-//        view.rootViewController = [UIViewController jsd_getCurrentViewController];
-//        view.delegate = self;
-//        view.videoDelegate = self;
-//        if (view.hasExpressAdGot) {
-//            [view render];
-//        }
-//        [self.container addSubview:view];
-//    }
 }
 
 //广告加载失败

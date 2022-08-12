@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:gromore/gromore.dart';
 import 'package:gromore/gromore_stream.dart';
+import 'package:gromore_example/banner_page.dart';
 import 'package:gromore_example/native_page.dart';
 
 void main() {
@@ -132,10 +133,21 @@ class IndexPageState extends State<IndexPage> {
               MaterialButton(
                 color: Colors.blue,
                 textColor: Colors.white,
-                child:  const Text('信息流'),
+                child:  const Text('信息流广告'),
                 onPressed: () async {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
                     return const NativePage();
+                  }));
+                },
+              ),
+              //横幅广告
+              MaterialButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                child:  const Text('横幅广告'),
+                onPressed: () async {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) {
+                    return const BannerPage();
                   }));
                 },
               ),
