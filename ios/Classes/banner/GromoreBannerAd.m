@@ -109,7 +109,7 @@
 - (void)bannerAd:(ABUBannerAd *)bannerAd didLoadFailWithError:(NSError *_Nullable)error{
     [[GroLogUtil sharedInstance] print:@"横幅广告加载失败回调"];
     NSInteger code = error.code;
-    NSString *message = error.userInfo;
+    NSString *message = error.userInfo.description;
     NSDictionary *dictionary = @{@"code":@(code),@"message":message};
     [self.channel invokeMethod:@"onFail" arguments:dictionary result:nil];
 }

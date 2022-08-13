@@ -84,7 +84,7 @@
 - (void)rewardedVideoAd:(ABURewardedVideoAd *)rewardedVideoAd didFailWithError:(NSError *)error{
     [[GroLogUtil sharedInstance] print:@"激励广告加载失败"];
     NSInteger code = error.code;
-    NSString *message = error.userInfo;
+    NSString *message = error.userInfo.description;
     NSDictionary *dictionary = @{@"adType":@"rewardAd",@"onAdMethod":@"onFail",@"code":@(code),@"message":message};
     [[GromoreEvent sharedInstance] sentEvent:dictionary];
 }
@@ -100,7 +100,7 @@
 - (void)rewardedVideoAdViewRenderFail:(ABURewardedVideoAd *_Nonnull)rewardedVideoAd error:(NSError * __nullable)error{
     [[GroLogUtil sharedInstance] print:@"激励广告渲染失败"];
     NSInteger code = error.code;
-    NSString *message = error.userInfo;
+    NSString *message = error.userInfo.description;
     NSDictionary *dictionary = @{@"adType":@"rewardAd",@"onAdMethod":@"onFail",@"code":@(code),@"message":message};
     [[GromoreEvent sharedInstance] sentEvent:dictionary];
 }
@@ -118,7 +118,7 @@
 - (void)rewardedVideoAdDidShowFailed:(ABURewardedVideoAd *)rewardedVideoAd error:(NSError *)error{
     [[GroLogUtil sharedInstance] print:@"激励广告展示失败"];
     NSInteger code = error.code;
-    NSString *message = error.userInfo;
+    NSString *message = error.userInfo.description;
     NSDictionary *dictionary = @{@"adType":@"rewardAd",@"onAdMethod":@"onFail",@"code":@(code),@"message":message};
     [[GromoreEvent sharedInstance] sentEvent:dictionary];
 }

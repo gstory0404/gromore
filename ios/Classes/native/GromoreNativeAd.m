@@ -131,7 +131,7 @@
 - (void)nativeAdsManager:(ABUNativeAdsManager *_Nonnull)adsManager didFailWithError:(NSError *_Nullable)error {
     [[GroLogUtil sharedInstance] print:@"信息流拉去失败"];
     NSInteger code = error.code;
-    NSString *message = error.userInfo;
+    NSString *message = error.userInfo.description;
     NSDictionary *dictionary = @{@"code":@(code),@"message":message};
     [self.channel invokeMethod:@"onFail" arguments:dictionary result:nil];
 }
@@ -151,7 +151,7 @@
 - (void)nativeAdExpressViewRenderFail:(ABUNativeAdView *_Nonnull)nativeExpressAdView error:(NSError *_Nullable)error {
     [[GroLogUtil sharedInstance] print:@"信息流广告渲染失败"];
     NSInteger code = error.code;
-    NSString *message = error.userInfo;
+    NSString *message = error.userInfo.description;
     NSDictionary *dictionary = @{@"code":@(code),@"message":message};
     [self.channel invokeMethod:@"onFail" arguments:dictionary result:nil];
 }
@@ -161,7 +161,7 @@
 - (void)nativeAdDidBecomeVisible:(ABUNativeAdView *_Nonnull)nativeAdView {
     NSString *str = [NSString stringWithFormat:@"信息流广告展示 %@",nativeAdView.getShowEcpmInfo.mj_keyValues];
     [[GroLogUtil sharedInstance] print:str];
-    [self.channel invokeMethod:@"onAdInfo" arguments:bannerAd.getShowEcpmInfo.mj_keyValues result:nil];
+    [self.channel invokeMethod:@"onAdInfo" arguments:nativeAdView.getShowEcpmInfo.mj_keyValues result:nil];
 }
 
 //广告点击事件
