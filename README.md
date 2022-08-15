@@ -34,7 +34,7 @@ gromore: ^0.0.2
 gromore:
     git:
       url: https://github.com/gstory0404/gromore.git
-      ref: b9f940455750fd13c1937102556c3833f245828c
+      ref: 14aa80a4aef0d573869fad1f237ac90ac09bad6c
 ```
 #### 引入
 ```Dart
