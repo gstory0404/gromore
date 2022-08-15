@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.dependency 'Flutter'
   s.platform = :ios, '9.0'
   # 穿山甲sdk
-  s.dependency 'Ads-CN-Beta','4.7.0.5'
+  s.dependency 'Ads-CN-Beta','~> 4.7.0.5'
   s.dependency 'MJExtension','~> 3.4.0'
   #gromore sdk
   s.vendored_frameworks = 'sdk/ABUAdSDK.framework','sdk/ABUAdCsjAdapter.framework'
