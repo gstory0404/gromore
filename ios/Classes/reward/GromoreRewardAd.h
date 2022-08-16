@@ -1,5 +1,5 @@
 //
-//  RewardAd.h
+//  GromoreRewardAd.h
 //  gromore
 //
 //  Created by gstory on 2022/8/10.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RewardAd : NSObject
+@interface GromoreRewardAd : NSObject
 
 + (instancetype)sharedInstance;
 - (void)initAd:(NSDictionary *)arguments;

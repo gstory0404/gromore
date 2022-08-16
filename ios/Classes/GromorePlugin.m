@@ -1,6 +1,6 @@
 #import "GromorePlugin.h"
 #import "ABUAdSDK/ABUAdSDKManager.h"
-#import "reward/RewardAd.h"
+#import "GromoreRewardAd.h"
 #import "GroLogUtil.h"
 #import "GromoreEvent.h"
 #import "GromoreNativeAd.h"
@@ -45,11 +45,11 @@
         result(version);
         //预加载激励广告
     }else if([@"loadRewardAd" isEqualToString:call.method]){
-        [[RewardAd sharedInstance] initAd:call.arguments];
+        [[GromoreRewardAd sharedInstance] initAd:call.arguments];
         result(@YES);
         //显示激励广告
     }else if([@"showRewardAd" isEqualToString:call.method]){
-        [[RewardAd sharedInstance] showAd];
+        [[GromoreRewardAd sharedInstance] showAd];
         result(@YES);
     } else {
         result(FlutterMethodNotImplemented);

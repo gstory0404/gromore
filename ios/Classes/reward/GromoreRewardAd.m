@@ -1,11 +1,11 @@
 //
-//  RewardAd.m
+//  GromoreRewardAd.m
 //  gromore
 //
 //  Created by gstory on 2022/8/10.
 //
 
-#import "RewardAd.h"
+#import "GromoreRewardAd.h"
 #import "ABUAdSDK/ABURewardedVideoAd.h"
 #import "ABUUIViewController+getCurrentVC.h"
 #import "GroLogUtil.h"
@@ -13,7 +13,7 @@
 #import "ABUAdSDK/ABUAdapterRewardAdInfo.h"
 #import "MJExtension.h"
 
-@interface RewardAd()<ABURewardedVideoAdDelegate>
+@interface GromoreRewardAd()<ABURewardedVideoAdDelegate>
 
 @property(nonatomic,strong) ABURewardedVideoAd *reward;
 @property(nonatomic,strong) NSString *codeId;
@@ -24,12 +24,12 @@
 
 @end
 
-@implementation RewardAd
+@implementation GromoreRewardAd
 
 + (instancetype)sharedInstance{
-    static RewardAd *myInstance = nil;
+    static GromoreRewardAd *myInstance = nil;
     if(myInstance == nil){
-        myInstance = [[RewardAd alloc]init];
+        myInstance = [[GromoreRewardAd alloc]init];
     }
     return myInstance;
 }
