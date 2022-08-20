@@ -23,8 +23,8 @@ class Gromore {
     bool? debug,
   }) async {
     return await _channel.invokeMethod("register", {
-      "iosAppId": androidAppId,
-      "androidAppId": iosAppId,
+      "androidAppId": androidAppId,
+      "iosAppId": iosAppId,
       "debug": debug ?? false,
     });
   }
