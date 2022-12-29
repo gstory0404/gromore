@@ -1,6 +1,11 @@
 # 穿山甲gromore聚合广告插件flutter版
+
 <p>
-<a href="https://pub.flutter-io.cn/packages/gromore"><img src=https://img.shields.io/badge/gromore-v0.0.2-success></a>
+<a href="https://pub.flutter-io.cn/packages/gromore"><img src=https://img.shields.io/pub/v/gromore?color=orange></a>
+<a href="https://pub.flutter-io.cn/packages/gromore"><img src=https://img.shields.io/pub/likes/gromore></a>
+<a href="https://pub.flutter-io.cn/packages/gromore"><img src=https://img.shields.io/pub/points/gromore></a>
+<a href="https://github.com/gstory0404/gromore/commits"><img src=https://img.shields.io/github/last-commit/gstory0404/gromore></a>
+<a href="https://github.com/gstory0404/gromore"><img src=https://img.shields.io/github/stars/gstory0404/gromore></a>
 </p>
 
 目前仅支持ios 信息流、横幅、激励广告
