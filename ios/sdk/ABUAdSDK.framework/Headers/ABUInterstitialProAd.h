@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class ABUInterstitialProAd, ABUAdapterRewardAdInfo;
+@class ABUInterstitialProAd, ABUAdapterRewardAdInfo, ABUDictionary;
 /// 插全屏广告代理协议
 @protocol ABUInterstitialProAdDelegate <NSObject>
 
@@ -84,10 +84,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype _Nonnull )initWithAdUnitID:(NSString *_Nonnull)adUnitID sizeForInterstitial:(CGSize)sizeForInterstitial;
 
 /// 广告代理对象
-@property (nonatomic, weak) id<ABUInterstitialProAdDelegate> _Nullable delegate;
+@property (nonatomic, weak, nullable) id<ABUInterstitialProAdDelegate> delegate;
 
 ///  optional 激励模型，用于全屏视频广告服务端激励回调；目前支持的adn:GDT
-@property (nonatomic, strong) ABURewardedVideoModel * _Nonnull rewardModel;
+@property (nonatomic, strong, nullable) ABURewardedVideoModel * rewardModel;
 
 /// 是否静音播放视频，是否真实静音由adapter确定，默认为NO，仅在广告加载前设置有效
 @property (nonatomic, assign) BOOL mutedIfCan;
@@ -96,38 +96,24 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) BOOL isReady;
 
 /// 广告的扩展信息，可能为nil
-- (NSDictionary *_Nullable)extraData;
+- (nullable ABUDictionary *)extraData;
 
 /// 展示广告
 /// @param viewController 跳转控制器，必传
 /// @param extraInfos 扩展信息，可选，与adapter及ADN是否实现有关，字段参见ABUADSDKConst.h中全屏视频、激励视频展示扩展部分
-- (BOOL)showAdFromRootViewController:(UIViewController *_Nonnull)viewController extraInfos:(NSDictionary *_Nullable)extraInfos;
-
-/// 展示广告
-/// @param viewController 跳转控制器，必传
-/// @param extroInfos 扩展信息，可选，与adapter及ADN是否实现有关，字段参见ABUADSDKConst.h中全屏视频、激励视频展示扩展部分
-- (BOOL)showAdFromRootViewController:(UIViewController *_Nonnull)viewController extroInfos:(NSDictionary *_Nullable)extroInfos ABU_DEPRECATED_MSG_ATTRIBUTE("接口即将废弃，请使用`showAdFromRootViewController:extraInfos:`代替");
-
-/// 返回显示广告对应的rit
-- (NSString *)getAdNetworkRitId ABU_DEPRECATED_MSG_ATTRIBUTE("接口即将废弃，请使用`getShowEcpmInfo`代替");
-
-/// 返回显示广告对应的ecpm，当没有权限访问该部分会返回-3 单位：分
-- (NSString *)getPreEcpm ABU_DEPRECATED_MSG_ATTRIBUTE("接口即将废弃，请使用`getShowEcpmInfo`代替");
-
-/// 返回显示广告对应的Adn名称
-- (NSString *)getAdNetworkPlatformName ABU_DEPRECATED_MSG_ATTRIBUTE("接口即将废弃，请使用`getShowEcpmInfo`代替");
+- (BOOL)showAdFromRootViewController:(UIViewController *)viewController extraInfos:(nullable NSDictionary *)extraInfos;
 
 /// 返回显示广告对应的披露信息，当没有权限访问时Ecpm会返回'-3'
-- (ABURitInfo *)getShowEcpmInfo;
+- (nullable ABURitInfo *)getShowEcpmInfo;
 
 /// 填充后可调用，返回当前最佳广告的ecpm；当为server bidding ad时访问需要白名单权限；nil为无权限
-- (ABURitInfo *_Nullable)getCurrentBestEcpmInfo;
+- (nullable ABURitInfo *)getCurrentBestEcpmInfo;
 
 /// 填充后可调用，但推荐展示后调用，返回竞价广告的ecpm；当为server bidding ad时访问需要白名单权限；
-- (NSArray<ABURitInfo *> *)multiBiddingEcpmInfos;
+- (nullable NSArray<ABURitInfo *> *)multiBiddingEcpmInfos;
 
 /// 填充后可调用, 返回广告缓存池内所有信息；nil为无权限
-- (NSArray<ABURitInfo *> *_Nullable)cacheRitList;
+- (nullable NSArray<ABURitInfo *> *)cacheRitList;
 
 /// 填充后可调用，获取广告中的extra信息。目前只支持穿山甲，并且只支持获取coupon, live_room, product信息。
 - (nullable NSDictionary *)getMediaExtraInfo;

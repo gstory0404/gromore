@@ -34,7 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-#define ABUAdSlotAdTypeFeed 0;
 #define ABUAdSlotPositionFeed 0;
 
 /// 旧版本广告配置类
@@ -104,10 +103,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL startMutedIfCan;
 
 /// 广告代理对象
-@property (nonatomic, weak) id<ABUNativeAdsManagerDelegate> delegate;
+@property (nonatomic, weak, nullable) id<ABUNativeAdsManagerDelegate> delegate;
 
 /// 必要，设置广告详情跳转控制器
-@property (nonatomic, weak) UIViewController *rootViewController;
+@property (nonatomic, weak, nullable) UIViewController *rootViewController;
 
 /// 加载广告方法
 /// @param count 加载广告的数量，建议单次不超过3个，优先以平台上配置为准

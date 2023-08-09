@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) NSInteger errCode;
 
 /// 错误描述
-@property (nonatomic, copy, readonly) NSString *errMsg;
+@property (nonatomic, copy, readonly, nullable) NSString *errMsg;
 
 @end
 

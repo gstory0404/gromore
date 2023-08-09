@@ -20,26 +20,32 @@
 
 ## 本地开发环境
 ```
-[✓] Flutter (Channel stable, 3.0.4, on macOS 12.5 21G72 darwin-x64, locale zh-Hans-CN)
-[✓] Android toolchain - develop for Android devices (Android SDK version 33.0.0-rc1)
-[✓] Xcode - develop for iOS and macOS (Xcode 13.4.1)
+[✓] Flutter (Channel stable, 3.10.6, on macOS 13.5 22G74 darwin-x64, locale
+    zh-Hans-CN)
+[✓] Android toolchain - develop for Android devices (Android SDK version 33.0.1)
+[✓] Xcode - develop for iOS and macOS (Xcode 14.3.1)
 [✓] Chrome - develop for the web
-[✓] Android Studio (version 2021.2)
-[✓] IntelliJ IDEA Ultimate Edition (version 2022.1.1)
-[✓] VS Code (version 1.69.2)
-[✓] Connected device (3 available)
-[✓] HTTP Host Availability
+[✓] Android Studio (version 2022.1)
+[✓] IntelliJ IDEA Ultimate Edition (version 2023.2)
+[✓] VS Code (version 1.80.2)
+[✓] Connected device (4 available)
+[✓] Network resources
 ```
+
+## 说明
+
+### iOS
+运行环境配置 
+支持系统iOS 10.X 及以上; 
+SDK编译环境 Xcode 13.1及以上版本; 
+
+### 插件
+当前使用gromore基础库Ads-Mediation-CN_4.3.0.1， 穿山甲ABUAdCsjAdapter_5.3.0.4.0已内置，其他的广告adapter根据文档导入到podfile中
 
 ## 集成步骤
 #### pubspec.yaml
 ```Dart
-gromore: ^0.0.2
-//或者使用git仓库版本，体验最新版本
-gromore:
-    git:
-      url: https://github.com/gstory0404/gromore.git
-      ref: d3c962813a7720f00b280cfffee52ddad5f91f70
+gromore: ^0.0.3
 ```
 #### 引入
 ```Dart

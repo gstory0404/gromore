@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *appID;
 
 /// appKey
-@property (nonatomic, copy, readonly) NSString *appKey;
+@property (nonatomic, copy, readonly, nullable) NSString *appKey;
 
 /// adn的标识
 @property (nonatomic, copy, readonly) NSString *name;
@@ -34,28 +34,28 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) BOOL custom;
 
 /// 自定义adapter初始化的配置类名，该类对象遵循ABUCustomConfigAdapter协议
-@property (nonatomic, copy, readonly) NSString *customAdnClassName;
+@property (nonatomic, copy, readonly, nullable) NSString *customAdnClassName;
 
 /// 自定义adapter banner广告的配置类名，该类对象遵循ABUCustomBannerAdapter协议
-@property (nonatomic, copy, readonly) NSString *customBannerAdapterClassName;
+@property (nonatomic, copy, readonly, nullable) NSString *customBannerAdapterClassName;
 
 /// 自定义adapter 插屏广告的配置类名，该类对象遵循ABUCustomInterstitialAdapter协议
-@property (nonatomic, copy, readonly) NSString *customInterstitialAdapterClassName;
+@property (nonatomic, copy, readonly, nullable) NSString *customInterstitialAdapterClassName;
 
 /// 自定义adapter 激励视频广告的配置类名，该类对象遵循ABUCustomRewardedVideoAdapter协议
-@property (nonatomic, copy, readonly) NSString *customRewardedVideoAdapterClassName;
+@property (nonatomic, copy, readonly, nullable) NSString *customRewardedVideoAdapterClassName;
 
 /// 自定义adapter 全屏广告的配置类名，该类对象遵循ABUCustomFullscreenVideoAdapter协议
-@property (nonatomic, copy, readonly) NSString *customFullscreenVideoAdapterClassName;
+@property (nonatomic, copy, readonly, nullable) NSString *customFullscreenVideoAdapterClassName;
 
 /// 自定义adapter 开屏广告的配置类名，该类对象遵循ABUCustomSplashAdapter协议
-@property (nonatomic, copy, readonly) NSString *customSplashAdapterClassName;
+@property (nonatomic, copy, readonly, nullable) NSString *customSplashAdapterClassName;
 
 /// 自定义adapter native广告的配置类名，该类对象遵循ABUCustomNativeAdapter协议
-@property (nonatomic, copy, readonly) NSString *customNativeAdapterClassName;
+@property (nonatomic, copy, readonly, nullable) NSString *customNativeAdapterClassName;
 
 /// 自定义adapter draw广告的配置类名，该类对象遵循ABUCustomDrawAdapter协议
-@property (nonatomic, copy, readonly) NSString *customDrawAdapterClassName;
+@property (nonatomic, copy, readonly, nullable) NSString *customDrawAdapterClassName;
 
 @end
 

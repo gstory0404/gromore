@@ -16,6 +16,9 @@ const static NSString *kABUPrivacyLimitProgrammaticAds = @"ABUPrivacyLimitProgra
 /// 【可选】NSNumber，是否禁止CAID：0-不禁止，1-禁止，默认为0。官方维护版本中只适用于百度。
 const static NSString *kABUPrivacyForbiddenCAID = @"ABUPrivacyForbiddenCAID";
 
+/// 【可选】NSNumber，是否禁止IDFA：0-不禁止，1-禁止，默认为0。官方维护版本中只适用于GDT。
+const static NSString *kABUPrivacyForbiddenIDFA = @"ABUPrivacyForbiddenIDFA";
+
 /// 【可选】NSNumber，是否在adn中使用位置，如果是，adn将自己获得纬度和经度，而不是使用传入的值（kABUPrivacyLongitude/kABUPrivacyLatitude）。官方维护版本中只适用于CSJ。
 const static NSString *kABUPrivacyCanLocation = @"ABUPrivacyCanLocation";
 
@@ -31,7 +34,7 @@ const static NSString *kABUPrivacyNotAdult = @"ABUPrivacyNotAdult";
 
 @interface ABUPrivacyConfig : NSObject
 
-// 根据key配置相关隐私项
+// 根据key配置相关隐私项，建议在启动前设置
 + (void)setPrivacyWithKey:(const NSString *)key andValue:(id)value;
 
 // 获取当前配置项

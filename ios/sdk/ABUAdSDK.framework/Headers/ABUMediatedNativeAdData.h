@@ -53,23 +53,17 @@ typedef NSObject<ABUMediatedNativeAdData> ABUMaterialMeta;
 /// 物料图片集，如果图片有宽高，请尽量配置width和height
 @property (nonatomic, copy, readonly, nullable) NSArray<ABUImage *> *imageList;
 
-/// 物料图片集，如果图片有宽高，请尽量配置width和height
-@property (nonatomic, copy, readonly, nullable) NSArray<ABUImage *> *imageAry ABU_DEPRECATED_MSG_ATTRIBUTE("接口即将废弃，请使用 'imageList' 代替");
-
-/// app图标，如果图标有宽高，请尽量配置width和height
+/// app类型广告的广告商app图标，如果图标有宽高，请尽量配置width和height
 @property (nonatomic, strong, readonly, nullable) ABUImage *icon;
 
-/// 广告logo，如果logo有宽高，请尽量配置width和height
+/// 广告adn的logo，如果logo有宽高，请尽量配置width和height
 @property (nonatomic, strong, readonly, nullable) ABUImage *adLogo;
 
-/// 聚合广告SDKlogo
-@property (nonatomic, strong, readonly, nullable) ABUImage *sdkLogo;
-
 /// 广告标题
-@property (nonatomic, copy, readonly, nullable) NSString *AdTitle;
+@property (nonatomic, copy, readonly, nullable) NSString *adTitle;
 
 /// 广告详情描述
-@property (nonatomic, copy, readonly, nullable) NSString *AdDescription;
+@property (nonatomic, copy, readonly, nullable) NSString *adDescription;
 
 /// 应用来源、市场，例如'App Store'
 @property (nonatomic, copy, readonly, nullable) NSString *source;

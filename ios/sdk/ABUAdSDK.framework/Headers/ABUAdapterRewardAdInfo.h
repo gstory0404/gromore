@@ -23,7 +23,7 @@ extern NSString *const ABUAdapterRewardAdCustomDataErrorMsgKey;
 /// @warning: GroMore的S2S的验证暂不支持
 extern NSString *const ABUAdapterRewardAdCustomDataRewardTypeKey;
 
-/// 建议奖励百分比， 基础奖励为1，进阶奖励为0.0 ~ 1.0，开发者自行换算----number
+/// 建议奖励百分比， 基础奖励为1，进阶奖励为0.0 ~ 1.0，开发者自行换算----number-float
 /// 目前支持返回该字段的adn：csj
 /// @warning: GroMore的S2S的验证暂不支持
 extern NSString *const ABUAdapterRewardAdCustomDataRewardProposeKey;
@@ -49,6 +49,9 @@ extern NSString *const ABUAdapterRewardAdCustomDataRewardProposeKey;
 
 /// 验证奖励发放的媒体名称，官方支持的ADN名称详见`ABUAdnType`注释部分，自定义ADN名称同平台配置
 @property (nonatomic, copy, nullable) NSString *adnName;
+
+/// 验证奖励发放的ecpm，实际返回受规则限制
+@property (nonatomic, copy, nullable) NSString *ecpm;
 
 /// 其他数据信息，包括但不限于错误信息，固定字段定义见文件上方
 @property (nonatomic, copy, nullable) NSDictionary *customData;

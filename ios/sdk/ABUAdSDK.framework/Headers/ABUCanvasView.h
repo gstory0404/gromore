@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) UIImageView *iconImageView;
 
 /// 广告大图，需要开发者根据广告物料自己指定展示内容，系统会自动创建，但内容需开发者自行校验
-@property (nonatomic, strong, readonly, nullable) UIImageView *imageView;
+@property (nonatomic, strong, readonly, nonnull) UIImageView *imageView;
 
 /// Ad CTA button. Need to be assigned from a data(ABUMaterialMeta), and need to be add to self(ABUNativeAdView).
 
@@ -61,6 +61,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param views 可响应点击操作的视图
 - (void)registerClickableViews:(nullable NSArray<UIView *> *)views;
 
+/// 取消可点击区域注册，由GroMore透传数据，是否生效由adapter和adn决定
+- (void)unregisterClickableViews;
 @end
 
 NS_ASSUME_NONNULL_END

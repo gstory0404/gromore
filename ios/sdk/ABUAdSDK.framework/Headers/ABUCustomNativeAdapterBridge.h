@@ -55,10 +55,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param nativeAd 广告数据，native广告请传递原始数据（即ABUMediatedNativeAd.originMediatedNativeAd），express广告请传递上报GroMore的UIView
 - (void)nativeAd:(id<ABUCustomNativeAdapter>_Nonnull)adapter willPresentFullScreenModalWithMediatedNativeAd:(id _Nonnull)nativeAd;
 
-/// 在广告关闭详情页或者appstore时调用该方法，直接调用即可，无需做响应判断
+/// 在广告落地页关闭时调用，直接调用即可，无需做响应判断
 /// @param adapter 当前适配器
 /// @param nativeAd 广告数据，native广告请传递原始数据（即ABUMediatedNativeAd.originMediatedNativeAd），express广告请传递上报GroMore的UIView
-- (void)nativeAd:(id<ABUCustomNativeAdapter>_Nonnull)adapter willDismissFullScreenModalWithMediatedNativeAd:(id _Nonnull)nativeAd;
+- (void)nativeAd:(id<ABUCustomNativeAdapter>_Nonnull)adapter didDismissFullScreenModalWithMediatedNativeAd:(id _Nonnull)nativeAd;
+
+/// 广告摇一摇提示view消除时调用该方法，直接调用即可，无需做响应判断
+/// @param adapter 当前适配器
+/// @param nativeAd 广告数据，native广告请传递原始数据（即ABUMediatedNativeAd.originMediatedNativeAd），express广告请传递上报GroMore的UIView
+- (void)nativeAd:(id<ABUCustomNativeAdapter>_Nonnull)adapter didShakeViewDismissWithNativeAd:(id _Nonnull)nativeAd;
 
 #pragma mark - Express ad
 /// 仅限模板广告，在渲染成功或者模板广告的尺寸更新时调用，直接调用即可，无需做响应判断
@@ -84,6 +89,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param state 播放状态
 /// @param nativeAd 广告数据，native广告请传递原始数据（即ABUMediatedNativeAd.originMediatedNativeAd），express广告请传递上报GroMore的UIView
 - (void)nativeAd:(id<ABUCustomNativeAdapter>_Nonnull)adapter videoStateDidChangedWithState:(ABUPlayerPlayState)state andNativeAd:(id _Nonnull)nativeAd;
+
+/// 激励信息流视频进入倒计时状态时调用
+/// @param adapter 当前适配器
+/// @param countDown : 倒计时
+/// @Note : 当前该回调仅适用于CSJ广告
+- (void)nativeAd:(id<ABUCustomNativeAdapter>_Nonnull)adapter rewardDidCountDown:(NSInteger)countDown andNativeAd:(id _Nonnull)nativeAd;
 
 /// 视频广告中视频视图被点击时调用，直接调用即可，无需做响应判断
 /// @param adapter 当前适配器

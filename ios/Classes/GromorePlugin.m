@@ -26,18 +26,14 @@
     if ([@"register" isEqualToString:call.method]) {
         BOOL debug = [call.arguments[@"debug"] boolValue];
         [[GroLogUtil sharedInstance] debug:debug];
-        if(debug){
-            [ABUAdSDKManager setLoglevel:ABUAdSDKLogLevelDebug language:ABUAdSDKLogLanguageCH];
-        }else{
-            [ABUAdSDKManager setLoglevel:ABUAdSDKLogLevelNone language:ABUAdSDKLogLanguageCH];
-        }
         NSString *appId = call.arguments[@"iosAppId"];
         //        NSDictionary *didDic = @{ @"device_id": @"1234567" };
-        [ABUAdSDKManager setupSDKWithAppId:appId config:^ABUUserConfig *(ABUUserConfig *c) {
+        [ABUAdSDKManager initSDKWithAppId:appId config:^ABUUserConfig *(ABUUserConfig *c) {
             c.logEnable = YES;
             //              c.extraDeviceMap = didDic;
             return c;
         }];
+        [ABUAdSDKManager setup];
         result(@YES);
         //获取sdk版本号
     }else if([@"sdkVersion" isEqualToString:call.method]){

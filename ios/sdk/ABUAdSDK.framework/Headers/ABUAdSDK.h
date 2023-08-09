@@ -51,6 +51,7 @@ FOUNDATION_EXPORT const unsigned char ABUAdSDKVersionString[];
 
 #pragma mark - 辅助
 #import "ABUVersion.h"
+#import "ABUDictionary.h"
 #import "UIWindow+GroMore.h"
 #import "ABUViewTracker.h"
 #import "ABUViewTrackerHelper.h"

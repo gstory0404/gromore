@@ -100,6 +100,11 @@ typedef NS_ENUM(NSInteger, ABUBiddingType) {
     ABUBiddingTypePriority = 100
 };
 
+typedef NS_ENUM(NSUInteger, ABUAutoEstPriceSource) {
+    ABUAutoEstPriceNone         = 0, // 无预估
+    ABUAutoEstPriceFromModel    = 1 // 预估价值来源是模型
+};
+
 
 #pragma mark - 其他
 
@@ -115,21 +120,5 @@ typedef NS_ENUM(NSInteger, ABUBiddingType) {
 #define ABU_DEPRECATED_MSG_ATTRIBUTE(s)
 #define ABU_DEPRECATED_ATTRIBUTE
 #endif
-
-@protocol ABUEnvironmentControl <NSObject>
-@optional
-
-- (NSString *)environmentKey;
-
-- (NSString *)deviceID;
-
-- (BOOL)underControl;
-
-- (NSDictionary *)environment;
-
-- (NSInteger)eventSlice;
-
-- (void)magic:(NSInteger)value supplement:(NSDictionary *)supplement;
-@end
 
 #endif /* ABUADSDK_const_h */

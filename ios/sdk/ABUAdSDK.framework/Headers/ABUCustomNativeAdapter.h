@@ -43,6 +43,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param views 可点击视图组
 - (void)registerContainerView:(__kindof UIView *)containerView andClickableViews:(NSArray<__kindof UIView *> *)views forNativeAd:(id)nativeAd;
 
+/// 取消注册可点击区域
+/// @param nativeAd 广告
+- (void)unregisterClickableViewsForNativeAd:(id)nativeAd;
+
 @optional
 
 /// 当前加载的广告的状态，native模板广告

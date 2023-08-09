@@ -9,6 +9,7 @@
 #import "ABUUserConfig.h"
 #import "ABUUserInfoForSegment.h"
 #import "ABUAdSDKConst.h"
+#import "ABUDictionary.h"
 
 @class ABUBaseAd;
 NS_ASSUME_NONNULL_BEGIN
@@ -20,10 +21,16 @@ __attribute__((objc_subclassing_restricted))
 /// GroMore SDK 版本
 @property (readonly, class) NSString *SDKVersion;
 
+/// 流量分组信息
+@property (nonatomic, strong, readonly) ABUUserInfoForSegment *userInfoForSegment;
+
 /// 初始化GroMore方法，不初始化将无法使用GroMore的相关功能
 /// @param appId 在GroMore注册的应用ID
 /// @param config 初始化配置回调
-+ (void)setupSDKWithAppId:(NSString *)appId config:(ABUUserConfig *(^)(ABUUserConfig *))config;
++ (void)initSDKWithAppId:(NSString *)appId config:(ABUUserConfig *(^)(ABUUserConfig *))config;
+
+/// 启用GroMore的方法，需要在初始化之后调用才能够正常使用功能
++ (void)setup;
 
 /// 获取初始化时使用的应用ID
 + (NSString *)appID;
@@ -34,6 +41,9 @@ __attribute__((objc_subclassing_restricted))
 
 /// 获取当前主题模式
 + (ABUAdSDKThemeStatus)themeStatus;
+
+/// 获取各类补充信息
++ (nullable ABUDictionary *)getGMSDKExtraInfo;
 
 /// 获取配置是否已经加载
 + (BOOL)configDidLoad;
@@ -47,21 +57,11 @@ __attribute__((objc_subclassing_restricted))
 /// @param extraDeviceMap 额外信息
 + (void)updateExtraDeviceMap:(NSDictionary *)extraDeviceMap;
 
-/// 旧版本兼容，初始化GroMore方法，请在初始化配置完成后调用
-/// @param appID 在GroMore注册的应用ID
-+ (void)setAppID:(NSString *)appID ABU_DEPRECATED_MSG_ATTRIBUTE("Use setupSDKWithAppId:config: instead");
+/// 设置广告主题，扩展暗黑模式
++ (void)setThemeStatus:(ABUAdSDKThemeStatus)themeStatus;
 
-/// 旧版本兼容，设置扩展设备信息，如不了解该功能，请勿使用。
-/// @param extraDeviceStr 扩展设备信息，如@"[{\"device_id\":\"62271333038\"}]"
-+ (void)setExtDeviceData:(NSString *)extraDeviceStr ABU_DEPRECATED_MSG_ATTRIBUTE("Use setupSDKWithAppId:config: or updateExtraDeviceMap: instead");
-
-/// 旧版本兼容，配置日志信息
-/// @param level 日志信息级别，ABUAdSDKLogLevelNone为不开启日志，其他值为开启
-/// @param language 日志语言，已无效
-+ (void)setLoglevel:(ABUAdSDKLogLevel)level language:(ABUAdSDKLogLanguage)language  ABU_DEPRECATED_MSG_ATTRIBUTE("Use setupSDKWithAppId:config: instead");
-
-/// 旧版本兼容，设置广告主题，扩展暗黑模式
-+ (void)setThemeStatus:(ABUAdSDKThemeStatus)themeStatus ABU_DEPRECATED_MSG_ATTRIBUTE("Use setupSDKWithAppId:config: instead");
+/// 设置自定义IDFA，格式需与IDFA格式相同，xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx，官方adapter中CSJ/KS/Klevin支持
++ (void)setCustomIDFA:(nonnull NSString *)customIDFA;
 
 /// 触发首次预缓存,针对特定广告位
 /// @param infos 广告对象
@@ -70,13 +70,5 @@ __attribute__((objc_subclassing_restricted))
 + (void)preloadAdsWithInfos:(NSArray<__kindof ABUBaseAd *> *)infos andInterval:(NSInteger)interval andConcurrent:(NSInteger)concurrent;
 
 @end
-
-// PLEASE DONOT use environment config if you do not clear what it means
-@interface ABUAdSDKManager (environment)
-
-+ (void)setEnvironmentControl:(id<ABUEnvironmentControl>)environmentControl;
-
-@end
-
 
 NS_ASSUME_NONNULL_END

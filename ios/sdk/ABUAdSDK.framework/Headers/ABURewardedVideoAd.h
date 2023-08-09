@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class ABURewardedVideoAd,ABUAdapterRewardAdInfo;
+@class ABURewardedVideoAd,ABUAdapterRewardAdInfo, ABUDictionary;
 
 /// 激励视频广告代理协议
 @protocol ABURewardedVideoAdDelegate <NSObject>
@@ -64,36 +64,29 @@ NS_ASSUME_NONNULL_BEGIN
 /// 广告视频播放完成或者出错回调
 /// @param rewardedVideoAd 广告管理对象
 /// @param error 播放出错时的信息，播放完成时为空
-- (void)rewardedVideoAdDidPlayFinish:(ABURewardedVideoAd * )rewardedVideoAd didFailWithError:(NSError *_Nullable)error ABU_DEPRECATED_MSG_ATTRIBUTE("接口即将废弃，请使用 rewardedVideoAd:didPlayFinishWithError:");
-
-/// 广告视频播放完成或者出错回调
-/// @param rewardedVideoAd 广告管理对象
-/// @param error 播放出错时的信息，播放完成时为空
 - (void)rewardedVideoAd:(ABURewardedVideoAd *)rewardedVideoAd didPlayFinishWithError:(NSError *_Nullable)error;
 
 @end
 
 @interface ABURewardedVideoAd : ABUBaseAd
 
-- (instancetype)initWithAdUnitID:(NSString *)unitID rewardedVideoModel:(ABURewardedVideoModel *)model ABU_DEPRECATED_MSG_ATTRIBUTE("Use initWithAdUnitID: && setRewardedVideoModel: instead");
-
 - (instancetype)initWithAdUnitID:(NSString *)unitID;
 
 /// 激励广告的自定义数据
-@property (nonatomic, strong) ABURewardedVideoModel *rewardedVideoModel;
+@property (nonatomic, strong, nullable) ABURewardedVideoModel *rewardedVideoModel;
 
-@property (nonatomic, weak) id<ABURewardedVideoAdDelegate> delegate;
+@property (nonatomic, weak, nullable) id<ABURewardedVideoAdDelegate> delegate;
 
 /// 再看一次的回调代理；在触发"再看一次"后，展示回调后的一些回调会依此触发，通过该标识判断当次回调是否属于再看一次的回调。支持的adn：Pangle/KS；
 /// 再看一次可触发的会滴：visiable/click/clickSkip/playFinesh/rewardedVideoAdServerRewardDidSucceed
-@property (nonatomic, weak) id<ABURewardedVideoAdDelegate> rewardPlayAgainDelegate;
+@property (nonatomic, weak, nullable) id<ABURewardedVideoAdDelegate> rewardPlayAgainDelegate;
 
 /**
  2021-02
  optional
  设定是否静音播放视频，YES = 静音，NO = 非静音
  PS:
- ①仅广点通支持设定mute
+ ①仅gdt、ks、mtg支持设定mute
  ②仅适用于视频播放器设定生效
  重点：请在loadAdData前设置,否则不生效
  */
@@ -118,46 +111,23 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param extraInfos 扩展信息，可选，与adapter及ADN是否实现有关，字段参见ABUADSDKConst.h中全屏视频、激励视频展示扩展部分
 - (BOOL)showAdFromRootViewController:(UIViewController *)viewController extraInfos:(NSDictionary *_Nullable)extraInfos;
 
-/// 展示广告
-/// @param viewController 跳转控制器，必传
-/// @param extroInfos 扩展信息，可选，与adapter及ADN是否实现有关，字段参见ABUADSDKConst.h中全屏视频、激励视频展示扩展部分
-- (BOOL)showAdFromRootViewController:(UIViewController *)viewController extroInfos:(NSDictionary *_Nullable)extroInfos ABU_DEPRECATED_MSG_ATTRIBUTE("接口即将废弃，请使用`showAdFromRootViewController:extraInfos:`代替");
-
-/// 返回显示广告对应的rit
-- (NSString *)getAdNetworkRitId ABU_DEPRECATED_MSG_ATTRIBUTE("接口即将废弃，请使用`getShowEcpmInfo`代替");
-
-/// 返回显示广告对应的ecpm，当没有权限访问该部分会返回-3 单位：分
-- (NSString *)getPreEcpm ABU_DEPRECATED_MSG_ATTRIBUTE("接口即将废弃，请使用`getShowEcpmInfo`代替");
-
-/// 返回显示广告对应的Adn名称
-- (NSString *)getAdNetworkPlatformName ABU_DEPRECATED_MSG_ATTRIBUTE("接口即将废弃，请使用`getShowEcpmInfo`代替");
-
 /// 返回显示广告对应的披露信息，当没有权限访问时Ecpm会返回'-3'
-- (ABURitInfo *)getShowEcpmInfo;
+- (nullable ABURitInfo *)getShowEcpmInfo;
 
 /// 填充后可调用，返回当前最佳广告的ecpm；当为server bidding ad时访问需要白名单权限；nil为无权限
-- (ABURitInfo *)getCurrentBestEcpmInfo;
+- (nullable ABURitInfo *)getCurrentBestEcpmInfo;
 
 /// 填充后可调用，但推荐展示后调用，返回竞价广告的ecpm；当为server bidding ad时访问需要白名单权限；
-- (NSArray<ABURitInfo *> *)multiBiddingEcpmInfos;
+- (nullable NSArray<ABURitInfo *> *)multiBiddingEcpmInfos;
 
 /// 填充后可调用, 返回广告缓存池内所有信息；nil为无权限
-- (NSArray<ABURitInfo *> *)cacheRitList;
+- (nullable NSArray<ABURitInfo *> *)cacheRitList;
 
 /// 广告的扩展信息，可能为nil
-- (NSDictionary *_Nullable)extraData;
+- (nullable ABUDictionary *)extraData;
 
 /// 填充后可调用，获取广告中的extra信息。目前只支持穿山甲，并且只支持获取coupon, live_room, product信息。
 - (nullable NSDictionary *)getMediaExtraInfo;
-
-/// 是否有点击跳过回调，依赖adapter实现，准确度降低，不建议使用
-@property (nonatomic, assign, readonly) BOOL hasSkipCallback ABU_DEPRECATED_MSG_ATTRIBUTE("接口即将废弃");
-
-/// 是否有点击回调，依赖adapter实现，准确度降低，不建议使用
-@property (nonatomic, assign, readonly) BOOL hasClickCallback ABU_DEPRECATED_MSG_ATTRIBUTE("接口即将废弃");
-
-/// 返回是否为模板广告，值同`getExpressAdIfCan`
-@property (nonatomic, assign, readonly) BOOL hasExpressAdGot ABU_DEPRECATED_MSG_ATTRIBUTE("接口即将废弃，在SDK V2900以上全屏视频客户端将无需区分模板非模板");
 
 @end
 

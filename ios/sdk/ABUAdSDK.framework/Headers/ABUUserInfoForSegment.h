@@ -7,6 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_ENUM (NSInteger, ABUUserInfoGender) {
     ABUUserInfoGenderFemale                   = 0,
     ABUUserInfoGenderMale                     = 1,
@@ -24,17 +26,17 @@ typedef ABUUserInfoGender ABUUserInfo_Gender;
 /// 流量分组信息
 @interface ABUUserInfoForSegment : NSObject
 /// user_id
-@property (nonatomic, copy) NSString *user_id;
+@property (nonatomic, copy, nullable) NSString *user_id;
 /// 渠道
-@property (nonatomic, copy) NSString *channel;
+@property (nonatomic, copy, nullable) NSString *channel;
 /// 子渠道
-@property (nonatomic, copy) NSString *sub_channel;
+@property (nonatomic, copy, nullable) NSString *sub_channel;
 /// 用户年龄
 @property (nonatomic, assign) NSInteger age;
 /// 用户性别
 @property (nonatomic, assign) ABUUserInfoGender gender;
 /// 价值分组
-@property (nonatomic, copy) NSString *user_value_group;
+@property (nonatomic, copy, nullable) NSString *user_value_group;
 
 /// 自定义设置
 /**
@@ -43,6 +45,9 @@ typedef ABUUserInfoGender ABUUserInfo_Gender;
     字符为数字,字母,"-","_"任意组合
     长度上限为100
  */
-@property (nonatomic, copy) NSDictionary *customized_id;
+@property (nonatomic, copy, nullable) NSDictionary *customized_id;
+
 @end
+
+NS_ASSUME_NONNULL_END
 

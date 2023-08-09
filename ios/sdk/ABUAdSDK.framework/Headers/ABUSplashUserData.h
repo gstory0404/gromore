@@ -13,20 +13,28 @@ NS_ASSUME_NONNULL_BEGIN
 /// 开屏广告兜底数据
 @interface ABUSplashUserData : NSObject
 
+/// 对象初始化方法，请尽量使用该方法初始化
+/// - Parameters:
+///   - adnName: ADN的名称
+///   - rit: ADN的代码位
+///   - appID: ADN的app id
+///   - appKey: ADN的app key
+- (instancetype)initWithAdnName:(NSString *)adnName
+                            rit:(NSString *)rit
+                          appID:(NSString *)appID
+                         appKey:(nullable NSString *)appKey;
+
 /// adn的名字，请使用如下值 'pangle','baidu','gdt','ks'，其他值可能导致无法加载广告
 @property (nonatomic, copy) NSString *adnName;
 
-// adn类型，参考ABUAdnType枚举类型，如1->pangle,3->gdt,4->baidu,7->ks
-@property (nonatomic, assign) ABUAdnType adnType ABU_DEPRECATED_MSG_ATTRIBUTE("参数即将废弃，请使用 'adnName' 代替");
-
 // adn对应代码位
-@property (nonatomic, copy) NSString *_Nonnull rit;
+@property (nonatomic, copy) NSString *rit;
 
 // adn对应appID
-@property (nonatomic, copy) NSString *_Nonnull appID;
+@property (nonatomic, copy) NSString *appID;
 
 // adn对应appKey, 没有时可不传
-@property (nonatomic, copy) NSString *_Nullable appKey;
+@property (nonatomic, copy, nullable) NSString *appKey;
 
 @end
 

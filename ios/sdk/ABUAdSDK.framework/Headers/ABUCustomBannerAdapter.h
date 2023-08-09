@@ -41,6 +41,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param views 可点击视图组
 - (void)registerContainerView:(__kindof UIView *)containerView andClickableViews:(NSArray<__kindof UIView *> *)views forNativeAd:(id)nativeAd;
 
+/// 取消注册容器和可点击区域
+- (void)unregisterClickableViewsForNativeAd:(id)nativeAd;
 @end
 
 

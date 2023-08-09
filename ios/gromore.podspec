@@ -17,9 +17,9 @@ Pod::Spec.new do |s|
   s.static_framework = true
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
-  s.platform = :ios, '9.0'
+  s.platform = :ios, '10.0'
   # 穿山甲sdk
-  s.dependency 'Ads-CN-Beta','~> 4.7.0.5'
+  s.dependency 'Ads-CN','~> 5.3.0.4'
   s.dependency 'MJExtension','~> 3.4.0'
   #gromore sdk
   s.vendored_frameworks = 'sdk/ABUAdSDK.framework','sdk/ABUAdCsjAdapter.framework'

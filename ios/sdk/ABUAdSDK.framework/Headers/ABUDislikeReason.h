@@ -4,16 +4,20 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ABUDislikeReason : NSObject
 
-- (instancetype)initWithID:(NSString *)ID name:(NSString *)name subReasons:(NSArray<ABUDislikeReason *> *)reasons;
+- (instancetype)initWithID:(nullable NSString *)ID name:(nullable NSString *)name subReasons:(nullable NSArray<ABUDislikeReason *> *)reasons;
 
-@property (nonatomic, copy, readonly) NSString *ID;
+@property (nonatomic, copy, readonly, nullable) NSString *ID;
 
-@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly, nullable) NSString *name;
 
-@property (nonatomic, copy, readonly) NSArray<ABUDislikeReason *> *subReasons;
+@property (nonatomic, copy, readonly, nullable) NSArray<ABUDislikeReason *> *subReasons;
 
 @property (nonatomic, assign) BOOL isSelected;
 
 @end
+
+NS_ASSUME_NONNULL_END

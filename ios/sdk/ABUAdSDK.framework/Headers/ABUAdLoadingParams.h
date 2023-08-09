@@ -11,6 +11,14 @@ extern NSString *const ABUAdLoadingParamLinkID;
 /// 聚合广告位ID，NSString
 extern NSString *const ABUAdLoadingParamMediationRitID;
 
+/// 场景ID，NSString
+extern NSString *const ABUAdLoadingParamScenarioID;
+
+/// 价值分组规则ID，NSString
+extern NSString *const ABUAdLoadingParamUValueRuleId;
+
+extern NSString *const ABUAdLoadingParamGroupType;
+
 /// ADN广告位ID，NSString
 extern NSString *const ABUAdLoadingParamMediaRitID;
 
@@ -54,10 +62,16 @@ extern NSString *const ABUAdLoadingParamISIsMute;
 /// 是否是静音，NSNumber/BOOL
 extern NSString *const ABUAdLoadingParamFVIsMute;
 
+/// 视频显示方向，NSNumber/NSInteger，0-竖屏，1-横屏，默认竖屏
+extern NSString *const ABUAdLoadingParamFVShowDirection;
+
 #pragma mark - 激励视频
 
 /// 是否是静音，NSNumber/BOOL
 extern NSString *const ABUAdLoadingParamRVIsMute;
+
+/// 视频显示方向，NSNumber/NSInteger，0-竖屏，1-横屏，默认竖屏
+extern NSString *const ABUAdLoadingParamRVShowDirection;
 
 /// 用户标识， NSString
 extern NSString *const ABUAdLoadingParamRVUserID;
@@ -90,12 +104,15 @@ extern NSString *const ABUAdLoadingParamSPTolerateTimeout;
 /// 开屏点击区域，NSNumber/NSInteger/ABUSplashButtonType
 extern NSString *const ABUAdLoadingParamSPButtonType;
 
-#pragma mark - Native广告
+#pragma mark - Native/Draw广告
 /// 期望广告图片尺寸，NSValue/CGSize
 extern NSString *const ABUAdLoadingParamNAExpectImageSize;
 
 /// 期望广告尺寸，NSValue/CGSize
 extern NSString *const ABUAdLoadingParamNAExpectSize;
+
+/// 期望摇一摇提示view的frame，NSValue/CGRect
+extern NSString *const ABUAdLoadingParamNAExpectShakeViewFrame;
 
 /// 是否是静音，NSNumber/BOOL
 extern NSString *const ABUAdLoadingParamNAIsMute;
