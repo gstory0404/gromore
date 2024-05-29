@@ -12,7 +12,7 @@
 <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=9I9lyXewEsEnx0f00EOF_9hEcFmG5Bmg&authKey=AJfQ8%2FhOLcoJ0p5B16EITjFav1IIs3UAerZSUsWZfa0evuklgxibHti51AYlZgI3&noverify=0&group_code=769626410"><img src=https://img.shields.io/badge/flutter%E4%BA%A4%E6%B5%81%E7%BE%A42-769626410-blue></a>
 </p>
 
-目前仅支持ios 信息流、横幅、激励广告
+# ⚠️ SDK已合并，请使用[flutter_unionad](https://github.com/gstory0404/flutter_unionad)，gromore不再维护
 
 ## 官方文档
 * [Android](https://www.csjplatform.com/union/media/union/download/detail?id=75&osType=android&locale=zh-CN)
